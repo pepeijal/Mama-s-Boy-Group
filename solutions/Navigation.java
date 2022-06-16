@@ -25,7 +25,7 @@ public class Navigation {
         
         try{
             
-            Scanner read = new Scanner(new FileInputStream ("C:/Users/HP/Documents/NetBeansProjects/SEM 2/src/Assignment_Navigation/0.txt")); // read text file
+            Scanner read = new Scanner(new FileInputStream ("0.txt")); // read text file
             while(read.hasNextLine()) { 
                 //if there is Integer, read the line as string and take the integer from string
                 if(read.hasNextInt()) {
