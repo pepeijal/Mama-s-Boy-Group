@@ -25,7 +25,7 @@ public class Payment {
         long currenttime = 0;
 
         try{
-            Scanner in = new Scanner(new FileInputStream("1.txt"));
+            Scanner in = new Scanner(new FileInputStream("cases"));
             while(in.hasNextLine()){
                 long noww = System.currentTimeMillis();
                 String line = in.nextLine();
