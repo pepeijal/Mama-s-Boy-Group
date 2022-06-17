@@ -42,7 +42,9 @@ public class Navigation {
                     addEdge(adjescent,source,destination);
                 }
             }
-            in.nextLine();
+            if(in.nextLine().equalsIgnoreCase("QUERIES")){
+                in.nextLine();
+            }
             String n2 = in.nextLine();
             
             int number2 = Integer.parseInt(n2);
