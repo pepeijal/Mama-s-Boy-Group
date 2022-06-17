@@ -8,8 +8,9 @@ import java.util.*;
 public class Navigation {
     public static void main(String[] args) {
         
-        
-        for (int x = 0; x < 5; x++) {
+        Scanner scan1 = new Scanner(System.in);
+        int scanner = scan1.nextInt();
+        for (int x = 0; x < scanner; x++) {
             
         
             Scanner scan = new Scanner(System.in); 
