@@ -1,18 +1,13 @@
-
-
-/**
- *
- * @author Faizal Ariff
- */
 import java.util.*;
 
 public class Navigation {
     public static void main(String[] args) {
         
         Scanner in = new Scanner(System.in);
-        int cases = in.nextInt();
-        for (int a = 0 ; a < cases ; a++){
-            in.nextLine();
+        in.nextLine();
+        
+        for (int a = 0 ; a < 5 ; a++){
+            
             String num1 = in.nextLine();
             int number1 = Integer.parseInt(num1);
             
