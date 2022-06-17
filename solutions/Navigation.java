@@ -1,9 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package Meow2;
-
 /**
  *
  * @author Faizal Ariff
@@ -14,8 +8,8 @@ public class Navigation {
     public static void main(String[] args) {
         
         Scanner scan = new Scanner(System.in);
-        scan.nextLine();
-        for(int a=0; a<5 ; a++){
+        int cases = scan.nextInt();
+        for(int a=0; a<cases ; a++){
             //Scan size of location data from file
             String num1 = scan.nextLine();
             int number1 = Integer.parseInt(num1);
