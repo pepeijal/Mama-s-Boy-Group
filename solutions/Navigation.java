@@ -12,74 +12,98 @@ import java.util.*;
 
 public class Navigation {
     public static void main(String[] args) {
-        for(int k =0;k<5;k++){
-        Scanner scan = new Scanner(System.in);
-        int test1 = scan.nextInt();
-        for(int a=0; a<test1 ; a++){
-            //Scan size of location data from file
-            String num1 = scan.nextLine();
-            int number1 = Integer.parseInt(num1);
-            
-            //Declaration for a place to store data
-            String test,datatest1,datatest2,answer="";
-            int pos = 0;
-            
-            //Call Class GraphMeow
-            GraphMama<String> graph = new GraphMama<>(number1);
-            
- 
-            ArrayList<ArrayList<Integer>> adjescent =new ArrayList<ArrayList<Integer>>(number1);
+        
+        Scanner sc = new Scanner(System.in);
 
-            for (int i = 0; i < number1; i++) {
-                adjescent.add(new ArrayList<Integer>());
-            } 
-            for(int i=1 ; i<=number1 ; i++){
-                
-                test = scan.nextLine(); 
-                String[] now = test.split(" => ");   
-                datatest1 = now[0]; 
-                datatest2 = now[1]; 
-                
-                
-                graph.addLocation(number1,datatest1);
-                graph.addLocation(number1,datatest2);
-                
-                
-                if(graph.addLine(datatest2, datatest1) && graph.addLine(datatest1, datatest2) == true){
-                    int source=graph.hasNumberLocation(datatest1);
-                    int destination=graph.hasNumberLocation(datatest2);
-                    addEdge(adjescent,source,destination);
+        //Scan size of location data 
+        int number1 = sc.nextInt();
+
+        //Declaration for a place to store data
+        String test,Answer = "";
+        String recent[] = new String[3];
+
+        //Call Class GraphMeow
+        GraphMeow<String> graph = new GraphMeow<>(number1+number1);
+
+        //Declare an ArrayList for ShortestRoute method
+        ArrayList<ArrayList<Integer>> adj =new ArrayList<>(number1+number1);
+
+        //ready a place to store an ArrayList inside adj ArrayList
+        for (int i = 0; i < (number1+number1); i++) {
+            adj.add(new ArrayList<>());
+        }
+        
+        sc.nextLine();
+        //Data for location and line
+        for(int i=1 ; i<=number1 ; i++){
+
+            test = sc.nextLine();
+            recent = test.split(" => ");   //split the string to get Location name
+
+            //add both location to LinkedList in GraphMeow using method
+            graph.addLocation(number1,recent[0]);
+            graph.addLocation(number1,recent[1]);
+            
+            //add Line between d1 & d2 (for LinkedList in GraphMeow) , then add edge between them (to find Shortest Route)
+            if(graph.addLine(recent[1], recent[0]) && graph.addLine(recent[0], recent[1]) == true){
+                int s=graph.hasLocationNo(recent[0]);
+                int d=graph.hasLocationNo(recent[1]);
+                addEdge(adj,s,d);
+            }
+        }
+        int number2 = sc.nextInt();
+        
+        int s,d;
+        LinkedList<Integer> jalan;
+        
+        sc.nextLine();
+        for(int i=1 ; i<=number2 ; i++){
+            
+            //for user input
+            test = sc.nextLine();
+            recent = test.split(" -> ");   //split the string to get Location name
+            
+            graph.hasLocation(recent[0]);
+            graph.hasLocation(recent[1]);
+            /*
+            if(graph.hasLocation(recent[0]) == false){
+                    System.out.println("This path doesnt start at the starting station!");
+                    continue;
                 }
+            
+            if(graph.hasLocation(recent[1]) == false){
+                    System.out.println("This path doesnt end at the destination!");
+                    continue;
+                }
+            */
+            s = graph.hasLocationNo(recent[0]);
+            d = graph.hasLocationNo(recent[1]);
+            
+            if(s == -1){
+                System.out.println("This path doesnt start at the starting station!");
+            }
+            if(d == -1){
+                System.out.println("This path doesnt end at the destination!");
             }
             
-            String n2 = scan.nextLine();
-            int number2 = Integer.parseInt(n2);
-            int source,destination;
-            LinkedList<Integer> routes;
+            jalan = printShortestDistance(adj, s, d, (number1+number1));
             
-                for(int i=1 ; i<=number2 ; i++){
-
-                    test = scan.nextLine(); 
-                    String[] now = test.split(" -> ");   
-                    datatest1 = now[0]; 
-                    datatest2 = now[1]; 
-
-                    source = graph.hasNumberLocation(datatest1);
-                    destination = graph.hasNumberLocation(datatest2);
-                    
-                    routes = printShortestDistance(adjescent, source, destination, number1);
-                    for (int j = routes.size() - 1; j >= 0; j--) {
-                        if(j == 0){
-                            answer += graph.getObjectLocation().get(routes.get(j));
-                            continue;
-                        }
-                        answer += graph.getObjectLocation().get(routes.get(j)) + " -> ";
-                    }
-                    System.out.println(answer);
-                    answer = "";
+            if(jalan == null){
+                        System.out.println("There is no train from "+recent[0]+" to "+recent[1]);
+                        continue;
                 }
+            else{
+                for (int j = jalan.size() - 1; j >= 0; j--) {
+                    if(j == 0){
+                        Answer += graph.getAllLocationObjects().get(jalan.get(j));
+                        continue;
+                    }
+                    Answer += graph.getAllLocationObjects().get(jalan.get(j)) + "->";
+                }
+                System.out.println(Answer);
+                Answer = "";
+            }
         }
-     }
     }
     
     
@@ -246,20 +270,20 @@ class Line<T extends Comparable<T>> {
         }
     }
 
-class GraphMama<T extends Comparable<T>> extends ArrayList{
+class GraphMeow<T extends Comparable<T>> extends ArrayList{
     Location<T> head;
     int size;
     ArrayList<ArrayList<Integer>> adj ;
 
 
     //default constructor
-    public GraphMama() {
+    public GraphMeow() {
         head = null;
         size = 0;
     }
 
     //constructor to prepare ArrayList for Shortest distance
-    public GraphMama(int size) {
+    public GraphMeow(int size) {
         this.adj = new ArrayList<>(size);
         head = null;
         size = 0;
@@ -292,7 +316,7 @@ class GraphMama<T extends Comparable<T>> extends ArrayList{
     }
 
     //method to get the index of location in the array
-    public int hasNumberLocation(T v){
+    public int hasLocationNo(T v){
         //if list == null
         if(head == null)
             return -1;
@@ -343,7 +367,7 @@ class GraphMama<T extends Comparable<T>> extends ArrayList{
     }
 
     //method to return a list of vertex using ArrayList
-    public ArrayList<T> getObjectLocation(){
+    public ArrayList<T> getAllLocationObjects(){
         ArrayList<T> list = new ArrayList<>();
         Location<T> temp = head;//let the cursor start from head of list
         int i=0;
