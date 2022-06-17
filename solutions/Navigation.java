@@ -14,6 +14,7 @@ public class Navigation {
     public static void main(String[] args) {
         
         Scanner scan = new Scanner(System.in);
+        scan.nextLine();
         for(int a=0; a<5 ; a++){
             //Scan size of location data from file
             String num1 = scan.nextLine();
