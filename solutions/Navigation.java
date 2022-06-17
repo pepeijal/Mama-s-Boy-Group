@@ -53,7 +53,7 @@ public class Navigation {
                     addEdge(adj,s,d);
                 }
             }
-            
+            scan.nextLine();
             String num2 = scan.nextLine();
             int number2 = Integer.parseInt(num2);
             int s,d;
