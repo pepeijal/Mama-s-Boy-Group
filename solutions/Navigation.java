@@ -42,9 +42,7 @@ public class Navigation {
                     addEdge(adjescent,source,destination);
                 }
             }
-            if(in.nextLine().equalsIgnoreCase("QUERIES")){
-                in.nextLine();
-            }
+            in.nextLine();
             String n2 = in.nextLine();
             
             int number2 = Integer.parseInt(n2);
@@ -65,7 +63,7 @@ public class Navigation {
                         answer += graph.getObjectLocation().get(routes.get(j));
                         continue;
                       }
-                    answer += graph.getObjectLocation().get(routes.get(j)) + " -> ";
+                    answer += graph.getObjectLocation().get(routes.get(j)) + "->";
                 }
                 System.out.println(answer);
                 answer = " ";
