@@ -8,8 +8,6 @@ public class Navigation {
     public static void main(String[] args) {
         
         Scanner in = new Scanner(System.in);
-        in.nextLine();
-        
         for (int a = 0 ; a < 5 ; a++){
             
             String num1 = in.nextLine();
@@ -73,7 +71,7 @@ public class Navigation {
                 answer = " ";
         }
     }
-}
+ }       
     
     
     private static void addEdge(ArrayList<ArrayList<Integer>> adj, int i, int j){
