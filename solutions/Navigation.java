@@ -17,7 +17,7 @@ public class Navigation {
             int pos = 0;
             
             //Call Class GraphMeow
-            Graph<String> graph = new Graph<>(num1);
+            GraphMeow<String> graph = new GraphMeow<>(num1);
             
             //Declare an ArrayList for ShortestRoute method
             ArrayList<ArrayList<Integer>> adj =new ArrayList<ArrayList<Integer>>(num1);
@@ -245,20 +245,20 @@ class Line<T extends Comparable<T>> {
         }
     }
 
-class GraphNya<T extends Comparable<T>> extends ArrayList{
+class GraphMeow<T extends Comparable<T>> extends ArrayList{
     Location<T> head;
     int size;
     ArrayList<ArrayList<Integer>> adj ;
 
 
     //default constructor
-    public GraphNya() {
+    public GraphMeow() {
         head = null;
         size = 0;
     }
 
     //constructor to prepare ArrayList for Shortest distance
-    public GraphNya(int size) {
+    public GraphMeow(int size) {
         this.adj = new ArrayList<>(size);
         head = null;
         size = 0;
