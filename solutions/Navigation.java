@@ -4,7 +4,8 @@ public class Navigation {
     public static void main(String[] args) {
         
         Scanner scan = new Scanner(System.in);
-        for(int a=0; a<5 ; a++){
+        int case = scan.nextInt();
+        for(int a=0; a<case ; a++){
             //Scan size of location data from file
             String num1 = scan.nextLine();
             int number1 = Integer.parseInt(num1);
