@@ -1,16 +1,11 @@
-/**
- *
- * @author Faizal Ariff
- */
 import java.util.*;
 
 
 public class Navigation {
     public static void main(String[] args) {
         
-        Scanner scan1 = new Scanner(System.in);
-        int scanner = scan1.nextInt();
-        for (int x = 0; x < scanner; x++) {
+        
+        for (int x = 0; x < 5; x++) {
             
         
             Scanner scan = new Scanner(System.in); 
@@ -23,7 +18,7 @@ public class Navigation {
             int pos = 0;
             
             
-            GraphMama<String> graph = new GraphMama<>(num1);
+            GraphNya<String> graph = new GraphNya<>(num1);
             
             //Declare an ArrayList for ShortestRoute method
             ArrayList<ArrayList<Integer>> adj =new ArrayList<ArrayList<Integer>>(num1);
@@ -251,20 +246,20 @@ class Line<T extends Comparable<T>> {
         }
     }
 
-class GraphMama<T extends Comparable<T>> extends ArrayList{
+class GraphNya<T extends Comparable<T>> extends ArrayList{
     Location<T> head;
     int size;
     ArrayList<ArrayList<Integer>> adj ;
 
 
     //default constructor
-    public GraphMama() {
+    public GraphNya() {
         head = null;
         size = 0;
     }
 
     //constructor to prepare ArrayList for Shortest distance
-    public GraphMama(int size) {
+    public GraphNya(int size) {
         this.adj = new ArrayList<>(size);
         head = null;
         size = 0;
@@ -561,6 +556,3 @@ class GraphMama<T extends Comparable<T>> extends ArrayList{
         return list;
     }
 }
-
-
-
