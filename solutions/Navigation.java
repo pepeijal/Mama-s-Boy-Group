@@ -12,19 +12,19 @@ import java.util.*;
 
 public class Navigation {
     public static void main(String[] args) {
-        
-        Scanner in = new Scanner(System.in);
-        int cases = in.nextInt();
-        for (int a = 0 ; a < cases ; a++){
-            in.nextLine();
-            String num1 = in.nextLine();
+        for(int k =0;k<5;k++){
+        Scanner scan = new Scanner(System.in);
+        int test1 = scan.nextInt();
+        for(int a=0; a<test1 ; a++){
+            //Scan size of location data from file
+            String num1 = scan.nextLine();
             int number1 = Integer.parseInt(num1);
             
-            
-            String test,datatest1,datatest2,answer=" ";
+            //Declaration for a place to store data
+            String test,datatest1,datatest2,answer="";
             int pos = 0;
             
-            
+            //Call Class GraphMeow
             GraphMama<String> graph = new GraphMama<>(number1);
             
  
@@ -35,7 +35,7 @@ public class Navigation {
             } 
             for(int i=1 ; i<=number1 ; i++){
                 
-                test = in.nextLine(); 
+                test = scan.nextLine(); 
                 String[] now = test.split(" => ");   
                 datatest1 = now[0]; 
                 datatest2 = now[1]; 
@@ -51,34 +51,36 @@ public class Navigation {
                     addEdge(adjescent,source,destination);
                 }
             }
-            in.nextLine();
-            String n2 = in.nextLine();
             
+            String n2 = scan.nextLine();
             int number2 = Integer.parseInt(n2);
             int source,destination;
             LinkedList<Integer> routes;
             
-            for(int i=1 ; i<=number2 ; i++){
-                test = in.nextLine(); 
-                String[] now = test.split(" -> ");   
-                datatest1 = now[0]; 
-                datatest2 = now[1];
-                source = graph.hasNumberLocation(datatest1);
-                destination = graph.hasNumberLocation(datatest2);
+                for(int i=1 ; i<=number2 ; i++){
+
+                    test = scan.nextLine(); 
+                    String[] now = test.split(" -> ");   
+                    datatest1 = now[0]; 
+                    datatest2 = now[1]; 
+
+                    source = graph.hasNumberLocation(datatest1);
+                    destination = graph.hasNumberLocation(datatest2);
                     
-                routes = printShortestDistance(adjescent, source, destination, number1);
-                for (int j = routes.size() - 1; j >= 0; j--) {
-                    if(j == 0){
-                        answer += graph.getObjectLocation().get(routes.get(j));
-                        continue;
-                      }
-                    answer += graph.getObjectLocation().get(routes.get(j)) + " -> ";
+                    routes = printShortestDistance(adjescent, source, destination, number1);
+                    for (int j = routes.size() - 1; j >= 0; j--) {
+                        if(j == 0){
+                            answer += graph.getObjectLocation().get(routes.get(j));
+                            continue;
+                        }
+                        answer += graph.getObjectLocation().get(routes.get(j)) + " -> ";
+                    }
+                    System.out.println(answer);
+                    answer = "";
                 }
-                System.out.println(answer);
-                answer = " ";
         }
+     }
     }
-}
     
     
     private static void addEdge(ArrayList<ArrayList<Integer>> adj, int i, int j){
