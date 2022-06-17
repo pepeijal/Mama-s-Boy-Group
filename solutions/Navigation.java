@@ -1,3 +1,4 @@
+
 import java.util.*;
 
 public class Navigation {
@@ -42,6 +43,7 @@ public class Navigation {
                     addEdge(adjescent,source,destination);
                 }
             }
+            in.nextLine();
             in.nextLine();
             String n2 = in.nextLine();
             
