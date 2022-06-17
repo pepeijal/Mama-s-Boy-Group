@@ -4,12 +4,11 @@ import java.util.*;
 public class Navigation {
     public static void main(String[] args) {
         
+        Scanner scan = new Scanner(System.in);
         
         for (int x = 0; x < 5; x++) {
-            
-        
-            Scanner scan = new Scanner(System.in); 
             //Scan size of location data from file
+            scan.nextLine();
             String num = scan.nextLine();
             int num1 = Integer.parseInt(num);
             
@@ -17,8 +16,8 @@ public class Navigation {
             String test,d1,d2,answer="";
             int pos = 0;
             
-            
-            GraphNya<String> graph = new GraphNya<>(num1);
+            //Call Class GraphMeow
+            Graph<String> graph = new Graph<>(num1);
             
             //Declare an ArrayList for ShortestRoute method
             ArrayList<ArrayList<Integer>> adj =new ArrayList<ArrayList<Integer>>(num1);
