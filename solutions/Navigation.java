@@ -4,6 +4,7 @@
  */
 import java.util.*;
 
+
 public class Navigation {
     public static void main(String[] args) {
         
@@ -20,8 +21,8 @@ public class Navigation {
             String test,d1,d2,answer="";
             int pos = 0;
             
-            //Call Class GraphMeow
-            Graph<String> graph = new Graph<>(num1);
+            
+            GraphMama<String> graph = new GraphMama<>(num1);
             
             //Declare an ArrayList for ShortestRoute method
             ArrayList<ArrayList<Integer>> adj =new ArrayList<ArrayList<Integer>>(num1);
@@ -84,7 +85,6 @@ public class Navigation {
          }
 
     }
-         
     
     
     private static void addEdge(ArrayList<ArrayList<Integer>> adj, int i, int j){
@@ -296,7 +296,7 @@ class GraphMama<T extends Comparable<T>> extends ArrayList{
     }
 
     //method to get the index of location in the array
-    public int hasNumberLocation(T v){
+    public int hasLocationNo(T v){
         //if list == null
         if(head == null)
             return -1;
@@ -347,7 +347,7 @@ class GraphMama<T extends Comparable<T>> extends ArrayList{
     }
 
     //method to return a list of vertex using ArrayList
-    public ArrayList<T> getObjectLocation(){
+    public ArrayList<T> getAllLocationObjects(){
         ArrayList<T> list = new ArrayList<>();
         Location<T> temp = head;//let the cursor start from head of list
         int i=0;
