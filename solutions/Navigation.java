@@ -5,7 +5,7 @@
 import java.util.*;
 
 public class Navigation {
-    public static void main(String[] args)throws FileNotFoundException {
+    public static void main(String[] args) {
         
         
         for (int x = 0; x < 5; x++) {
@@ -83,7 +83,8 @@ public class Navigation {
                 }
          }
 
-    }      
+    }
+         
     
     
     private static void addEdge(ArrayList<ArrayList<Integer>> adj, int i, int j){
