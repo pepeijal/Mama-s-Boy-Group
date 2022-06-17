@@ -1,15 +1,10 @@
-/**
- *
- * @author Faizal Ariff
- */
 import java.util.*;
 
 public class Navigation {
     public static void main(String[] args) {
         
         Scanner scan = new Scanner(System.in);
-        int cases = scan.nextInt();
-        for(int a=0; a<cases ; a++){
+        for(int a=0; a<5 ; a++){
             //Scan size of location data from file
             String num1 = scan.nextLine();
             int number1 = Integer.parseInt(num1);
@@ -48,7 +43,7 @@ public class Navigation {
                     addEdge(adj,s,d);
                 }
             }
-            scan.nextLine();
+            
             String num2 = scan.nextLine();
             int number2 = Integer.parseInt(num2);
             int s,d;
@@ -552,6 +547,3 @@ class GraphMeow<T extends Comparable<T>> extends ArrayList{
         return list;
     }
 }
-
-
-
