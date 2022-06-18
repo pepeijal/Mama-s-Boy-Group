@@ -275,7 +275,7 @@ class GraphMama<T extends Comparable<T>> extends ArrayList{
     }
 
     //method to get the index of location in the array
-    public int hasLocationNo(T v){
+    public int hasNumberLocation(T v){
         //if list == null
         if(head == null)
             return -1;
@@ -326,7 +326,7 @@ class GraphMama<T extends Comparable<T>> extends ArrayList{
     }
 
     //method to return a list of vertex using ArrayList
-    public ArrayList<T> getAllLocationObjects(){
+    public ArrayList<T> getObjectLocation(){
         ArrayList<T> list = new ArrayList<>();
         Location<T> temp = head;//let the cursor start from head of list
         int i=0;
